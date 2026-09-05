@@ -158,12 +158,12 @@
   }
   .amenity svg{ width:2.3rem; height:2.3rem; color:var(--rust); margin-top:.35rem; }
   .amenity h3{ font-size:1.6rem; font-weight:500; letter-spacing:-.005em; }
-  .amenity p{ margin:.6rem 0 0; color:var(--ink-soft); max-width:50ch; }
+  .amenity p{ grid-column:2; margin:.6rem 0 0; color:var(--ink-soft); max-width:50ch; }
 
   @media (min-width:52rem){
     .amenity{ grid-template-columns:3rem 20rem 1fr; align-items:start; }
     .amenity h3{ padding-right:2rem; }
-    .amenity p{ margin-top:.35rem; }
+    .amenity p{ grid-column:3; margin-top:.35rem; }
   }
 
   /* ---------- Features (navy) ------------------------------------------ */
