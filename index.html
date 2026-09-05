@@ -3,43 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Concierges et cetera — a community for baby boomers</title>
-<meta name="description" content="A private online community for baby boomers, with verified personal homecare assistants and trusted home helpers when you need a hand.">
+<title>Concierges et cetera — an online social community for Baby Boomers</title>
+<meta name="description" content="An online social community for Baby Boomers. Build meaningful friendships, source verified Personal Homecare Assistance and access trusted Home Helpers.">
 
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="icon" href="assets/favicon-32.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<!-- Social share preview. Replace conciergesetc.com if the domain changes. -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Concierges et cetera">
-<meta property="og:description" content="A community for baby boomers, and the help that goes with it.">
-<meta property="og:image" content="https://conciergesetc.com/assets/og-image.jpg">
-<meta property="og:url" content="https://conciergesetc.com/">
+<meta property="og:description" content="An online social community for Baby Boomers.">
+<meta property="og:image" content="https://conciergesetcetera.com/assets/og-image.jpg">
+<meta property="og:url" content="https://conciergesetcetera.com/">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,200;6..72,300;6..72,400;6..72,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500;6..72,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root{
     /* Sampled directly from the Boomers Thrive65 logo */
     --navy:      #091A38;
-    --navy-deep: #060F24;
     --navy-line: #1D3054;
     --amber:     #F5A03C;
     --rust:      #C45E36;
     --cream:     #F6F1E8;
+    --cream-alt: #EFE7D9;
     --stone:     #B9C0D0;
     --ink:       #14213D;
+    --ink-soft:  #4A5568;
 
     --measure: 62ch;
     --pad: clamp(1.5rem, 5vw, 4rem);
   }
 
   *,*::before,*::after{ box-sizing:border-box; }
-
   html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
 
   body{
@@ -63,14 +62,9 @@
 
   p{ margin:0 0 1.1em; max-width:var(--measure); }
   p:last-child{ margin-bottom:0; }
-
   a{ color:inherit; }
 
-  :focus-visible{
-    outline:3px solid var(--amber);
-    outline-offset:3px;
-    border-radius:2px;
-  }
+  :focus-visible{ outline:3px solid var(--amber); outline-offset:3px; border-radius:2px; }
 
   .skip{
     position:absolute; left:-9999px;
@@ -79,130 +73,76 @@
   }
   .skip:focus{ left:1rem; top:1rem; }
 
-  .wrap{
-    width:min(72rem, 100%);
-    margin-inline:auto;
-    padding-inline:var(--pad);
-  }
+  .wrap{ width:min(72rem, 100%); margin-inline:auto; padding-inline:var(--pad); }
 
   /* ---------- Hero ---------------------------------------------------- */
 
   .hero{
-    position:relative;
-    overflow:hidden;
-    padding-block: clamp(2.25rem, 6vw, 3.5rem) clamp(4.5rem, 12vw, 8rem);
-    isolation:isolate;
+    position:relative; overflow:hidden; isolation:isolate;
+    padding-block: clamp(4rem, 12vw, 8rem) clamp(4.5rem, 13vw, 8.5rem);
   }
 
-  /* The one bold move: the logo's own sunset, lifted off the page behind it. */
+  /* The one bold move: the logo's own sunset, lifted off the page. */
   .hero::before{
     content:"";
     position:absolute;
-    left:74%; top:34%;
-    width:min(130%, 62rem); aspect-ratio:1/1;
+    left:50%; top:38%;
+    width:min(150%, 68rem); aspect-ratio:1/1;
     transform:translate(-50%,-50%);
     background:radial-gradient(circle at 50% 50%,
-                 rgba(245,160,60,.30) 0%,
-                 rgba(196,94,54,.20) 30%,
-                 rgba(9,26,56,0) 62%);
+                 rgba(245,160,60,.26) 0%,
+                 rgba(196,94,54,.17) 32%,
+                 rgba(9,26,56,0) 63%);
     z-index:-1;
     animation:dawn 2.2s ease-out both;
   }
-  @media (max-width:60rem){
-    .hero::before{ left:50%; top:16%; width:min(190%, 40rem); }
-  }
-
-  .masthead{
-    font-family:Newsreader, Georgia, serif;
-    font-size:1.3rem;
-    margin-bottom:clamp(2.5rem, 9vw, 5.5rem);
-  }
-
-  .hero-grid{ display:grid; gap:clamp(2.5rem, 6vw, 4rem); align-items:center; }
-  @media (min-width:60rem){
-    .hero-grid{ grid-template-columns:minmax(0,1fr) 19rem; gap:5rem; }
-    .hero-copy{ order:1; }
-    .hero-mark{ order:2; }
-  }
-
-  .hero-mark img{
-    display:block;
-    width:clamp(122px, 32vw, 304px);
-    height:auto;
-    filter:drop-shadow(0 18px 46px rgba(0,0,0,.45));
-  }
 
   .hero h1{
-    font-size:clamp(2.35rem, 4.6vw, 3.55rem);
-    max-width:22ch;
+    font-weight:600;
+    font-size:clamp(2.5rem, 6.4vw, 4.6rem);
+    max-width:14ch;
   }
-  .hero h1 br{ display:none; }
-  @media (min-width:72rem){ .hero h1 br{ display:inline; } }
+
   .hero .lede{
-    margin-top:1.5rem;
-    font-size:clamp(1.1875rem, 2.2vw, 1.35rem);
+    margin-top:1.9rem;
+    font-size:clamp(1.1875rem, 2.1vw, 1.35rem);
     color:var(--stone);
-    max-width:47ch;
+    max-width:54ch;
   }
 
-  .actions{
-    display:flex; flex-wrap:wrap; gap:1rem;
-    margin-top:2.4rem;
-  }
-
-  .btn{
-    display:inline-flex; align-items:center; justify-content:center;
-    min-height:56px;                 /* generous target for unsteady hands */
-    padding:.65rem 2rem;
-    font-size:1.125rem; font-weight:600;
-    text-decoration:none;
-    border-radius:999px;
-    transition:background-color .18s ease, color .18s ease, border-color .18s ease;
-  }
-  .btn-solid{
-    background:var(--amber); color:var(--navy-deep);
-    border:2px solid var(--amber);
-  }
-  .btn-solid:hover{ background:#ffb455; border-color:#ffb455; }
-  .btn-ghost{
-    color:var(--cream);
-    border:2px solid rgba(246,241,232,.35);
-  }
-  .btn-ghost:hover{ border-color:var(--cream); }
-
-  /* Load-in: one orchestrated moment, then the page stays still. */
   .rise{ animation:rise .85s cubic-bezier(.2,.7,.3,1) both; }
-  .masthead{ animation-delay:.05s; }
-  .hero-mark{ animation-delay:.15s; }
-  .hero h1{ animation-delay:.28s; }
-  .hero .lede{ animation-delay:.42s; }
-  .actions{ animation-delay:.56s; }
+  .hero h1{ animation-delay:.12s; }
+  .hero .lede{ animation-delay:.3s; }
 
-  @keyframes rise{
-    from{ opacity:0; transform:translateY(14px); }
-    to  { opacity:1; transform:none; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+  @keyframes dawn{ from{ opacity:0; } to{ opacity:1; } }
+
+  /* ---------- Shared section headings --------------------------------- */
+
+  .eyebrow{
+    font-family:"Source Sans 3", sans-serif;
+    font-weight:700;
+    font-size:clamp(2rem, 5vw, 3.1rem);
+    letter-spacing:.06em;
+    line-height:1.1;
+    margin:0;
   }
-  @keyframes dawn{
-    from{ opacity:0; }
-    to  { opacity:1; }
+  .standfirst{
+    margin-top:1.15rem;
+    font-size:clamp(1.1875rem, 2vw, 1.35rem);
+    max-width:50ch;
   }
+  .standfirst strong{ font-weight:700; }
 
-  /* ---------- Offering (cream) ---------------------------------------- */
+  /* ---------- Services (cream) ---------------------------------------- */
 
-  .offering{
+  .services{
     background:var(--cream);
     color:var(--ink);
     padding-block:clamp(4rem, 10vw, 7rem);
   }
-  .offering h2{
-    font-size:clamp(1.9rem, 4.4vw, 2.9rem);
-    max-width:20ch;
-  }
-  .offering .intro{
-    margin-top:1.25rem;
-    color:#4A5568;
-    max-width:52ch;
-  }
+  .services .eyebrow{ color:var(--ink); }
+  .services .standfirst{ color:var(--ink-soft); }
 
   /* A list of amenities, the way a club would set it — not a rack of cards. */
   .amenities{
@@ -216,21 +156,9 @@
     padding-block:2.1rem;
     border-bottom:1px solid rgba(20,33,61,.18);
   }
-  .amenity svg{
-    width:2.3rem; height:2.3rem;
-    color:var(--rust);
-    margin-top:.35rem;
-  }
-  .amenity h3{
-    font-size:1.55rem;
-    font-weight:400;
-    letter-spacing:-.005em;
-  }
-  .amenity p{
-    margin:.6rem 0 0;
-    color:#4A5568;
-    max-width:50ch;
-  }
+  .amenity svg{ width:2.3rem; height:2.3rem; color:var(--rust); margin-top:.35rem; }
+  .amenity h3{ font-size:1.6rem; font-weight:500; letter-spacing:-.005em; }
+  .amenity p{ margin:.6rem 0 0; color:var(--ink-soft); max-width:50ch; }
 
   @media (min-width:52rem){
     .amenity{ grid-template-columns:3rem 20rem 1fr; align-items:start; }
@@ -238,16 +166,11 @@
     .amenity p{ margin-top:.35rem; }
   }
 
-  /* ---------- Assurances (navy) --------------------------------------- */
+  /* ---------- Features (navy) ------------------------------------------ */
 
-  .assurance{ padding-block:clamp(4rem, 10vw, 6.5rem); }
-  .assurance h2{
-    font-size:clamp(1.9rem, 4.4vw, 2.9rem);
-    max-width:18ch;
-  }
-  .assurance .intro{
-    margin-top:1.25rem; color:var(--stone); max-width:50ch;
-  }
+  .features{ padding-block:clamp(4rem, 10vw, 6.5rem); }
+  .features .standfirst{ color:var(--amber); font-weight:600; }
+
   .checks{
     list-style:none;
     border-bottom:1px solid var(--navy-line);
@@ -260,47 +183,94 @@
   }
   .checks li{
     display:flex; gap:1.1rem; align-items:flex-start;
-    padding-block:1.5rem;
+    padding-block:1.6rem;
     border-top:1px solid var(--navy-line);
   }
-  .checks svg{
-    flex:none; width:1.6rem; height:1.6rem;
-    color:var(--amber); margin-top:.28rem;
-  }
-  .checks strong{ font-weight:600; display:block; }
-  .checks span{ color:var(--stone); display:block; }
+  .checks svg{ flex:none; width:1.6rem; height:1.6rem; color:var(--amber); margin-top:.3rem; }
+  .checks strong{ font-weight:700; display:block; font-size:1.22rem; }
+  .checks span{ color:var(--stone); display:block; margin-top:.15rem; }
 
-  /* ---------- App ------------------------------------------------------ */
+  /* ---------- Community / app (tan) ------------------------------------ */
 
-  .app{
-    background:var(--navy-deep);
+  .community{
+    background:var(--cream-alt);
+    color:var(--ink);
     padding-block:clamp(4rem, 10vw, 6.5rem);
-    border-top:1px solid var(--navy-line);
+    text-align:center;
   }
-  .app-inner{
-    display:grid; gap:2.5rem;
-    align-items:center;
-    justify-items:start;
+  .community img{
+    width:clamp(140px, 30vw, 200px); height:auto;
+    display:block; margin:0 auto clamp(2rem, 5vw, 2.75rem);
+    filter:drop-shadow(0 14px 34px rgba(20,33,61,.22));
   }
-  @media (min-width:52rem){
-    .app-inner{ grid-template-columns:auto 1fr; gap:4rem; }
+  .community h2{
+    font-family:"Source Sans 3", sans-serif;
+    font-weight:700;
+    font-size:clamp(1.85rem, 4.4vw, 2.6rem);
+    letter-spacing:.02em;
   }
-  .app img{ width:clamp(120px, 26vw, 168px); height:auto; }
-  .app h2{ font-size:clamp(1.8rem, 4.2vw, 2.6rem); }
-  .app p{ margin-top:1rem; color:var(--stone); max-width:44ch; }
-  .stores{ display:flex; flex-wrap:wrap; gap:1rem; margin-top:2rem; }
+  .community .download{
+    margin:1rem auto 0;
+    font-size:clamp(1.25rem, 2.4vw, 1.5rem);
+  }
+  .community .tagline{
+    margin:1.35rem auto 0;
+    max-width:62ch;
+    font-weight:700;
+    letter-spacing:.03em;
+    color:var(--ink);
+    font-size:clamp(1.0625rem, 2.1vw, 1.2rem);
+  }
+  .community p{ max-width:44ch; }
+
+  .stores{
+    display:flex; flex-wrap:wrap; gap:1rem;
+    justify-content:center;
+    margin-top:clamp(2.25rem, 5vw, 2.75rem);
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    min-height:56px;                 /* generous target for unsteady hands */
+    padding:.65rem 1.9rem;
+    font-size:1.0625rem; font-weight:600;
+    text-decoration:none;
+    border-radius:999px;
+    border:2px solid transparent;
+    transition:background-color .18s ease, border-color .18s ease;
+  }
+  .btn-solid{ background:var(--amber); color:var(--ink); border-color:var(--amber); }
+  a.btn-solid:hover{ background:#ffb455; border-color:#ffb455; }
+  .btn-ghost{ color:var(--ink); border-color:rgba(20,33,61,.35); }
+  a.btn-ghost:hover{ border-color:var(--ink); }
+
+  /* Non-clickable state while the app is still awaiting store approval */
+  .btn-waiting{
+    background:transparent; color:var(--ink-soft);
+    border-color:rgba(20,33,61,.28);
+    border-style:dashed;
+    font-weight:600; cursor:default;
+  }
 
   /* ---------- Footer --------------------------------------------------- */
 
-  footer{
-    border-top:1px solid var(--navy-line);
-    padding-block:3rem 3.5rem;
-    font-size:1.0625rem;
-    color:var(--stone);
+  footer{ padding-block:3rem 3.25rem; color:var(--stone); }
+  .foot-main{
+    display:flex; flex-wrap:wrap;
+    justify-content:space-between; align-items:baseline;
+    gap:.75rem 2rem;
+    font-size:clamp(1.125rem, 2.1vw, 1.35rem);
   }
-  footer .rows{ display:grid; gap:.5rem; }
-  footer a{ display:inline-block; padding-block:.6rem; color:var(--amber); text-decoration-thickness:1px; text-underline-offset:3px; }
-  footer .fine{ margin-top:1.75rem; font-size:.95rem; color:#7C879F; }
+  .foot-main a{
+    display:inline-block; padding-block:.4rem;
+    color:var(--amber);
+    text-decoration-thickness:1px; text-underline-offset:3px;
+  }
+  footer .fine{
+    margin-top:1.9rem; padding-top:1.5rem;
+    border-top:1px solid var(--navy-line);
+    font-size:.95rem; color:#7C879F;
+  }
 
   @media (prefers-reduced-motion:reduce){
     *{ animation:none !important; transition:none !important; }
@@ -314,36 +284,22 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="masthead rise">Concierges et cetera</div>
-
-    <div class="hero-grid">
-      <div class="hero-mark rise">
-        <img src="assets/logo.png" alt="Boomers Thrive65" width="304" height="304">
-      </div>
-
-      <div class="hero-copy">
-        <h1 class="rise">Company when you want it. <br>Help when you need it.</h1>
-
-        <p class="lede rise">A private online community for baby boomers &mdash; with verified
-           personal homecare assistants and trusted home helpers for the days you&rsquo;d
-           rather not do it all yourself.</p>
-
-        <div class="actions rise">
-          <a class="btn btn-solid" href="#app">Get the app</a>
-          <a class="btn btn-ghost" href="mailto:info@conciergesetc.com">Ask us a question</a>
-        </div>
-      </div>
-    </div>
+    <h1 class="rise">Concierges et cetera</h1>
+    <p class="lede rise">An online social community for Baby Boomers. Members build
+       meaningful friendships through online social connections, source verified
+       Personal Homecare Assistance and access trusted Home Helpers. We bring peace
+       of mind to our members and their families, ensuring you can embrace each day
+       with greater comfort and trusted support.</p>
   </div>
 </header>
 
 <main id="main">
 
-  <section class="offering">
+  <section class="services">
     <div class="wrap">
-      <h2>Membership covers the company and the practicalities.</h2>
-      <p class="intro">Three things, all in one place, all with people who have
-         been checked before they ever reach you.</p>
+      <h2 class="eyebrow">SERVICES</h2>
+      <p class="standfirst">Where you can maintain your independence through
+         <strong>CONNECTION, WELLNESS</strong> and <strong>SUPPORT</strong></p>
 
       <div class="amenities">
 
@@ -355,9 +311,8 @@
             <path d="M20 20v-1.5a3.5 3.5 0 0 0-2.6-3.4"/>
             <path d="M15.5 4.7a3.5 3.5 0 0 1 0 6.6"/>
           </svg>
-          <h3>A community that shares your interests</h3>
-          <p>Conversation, groups and plans with people at the same stage of life —
-             behind a closed door, not out on a public feed.</p>
+          <h3>Stay Connected</h3>
+          <p>Connect securely with an online social community that shares common interests</p>
         </article>
 
         <article class="amenity">
@@ -367,9 +322,8 @@
             <path d="M2.6 15.1a2 2 0 0 1 2.7.3l1.5 1.7h3.1a1.7 1.7 0 0 1 0 3.4"/>
             <path d="M9.9 18.5h2.9l5.1-2.3a1.9 1.9 0 0 1 2.5.9c.4.9 0 2-.9 2.4l-6.2 2.9H6.8l-4.2-3"/>
           </svg>
-          <h3>Verified personal homecare assistants</h3>
-          <p>Non-medical care at home, from assistants whose credentials and
-             references have been checked by us first.</p>
+          <h3>Personal Homecare Assistance</h3>
+          <p>Connect directly with verified Personal Homecare Assistants for non-medical care</p>
         </article>
 
         <article class="amenity">
@@ -379,20 +333,18 @@
             <path d="M5.6 12.1V20h12.8v-7.9"/>
             <path d="M9.6 20v-4.6h4.8V20"/>
           </svg>
-          <h3>Trusted home helpers</h3>
-          <p>Housework, errands, the shop, the garden, the things that pile up.
-             Booked when you want them, not on a schedule.</p>
+          <h3>Home Helpers</h3>
+          <p>Connect with trusted Home Helpers for assistance with housework, errands, etc.</p>
         </article>
 
       </div>
     </div>
   </section>
 
-  <section class="assurance">
+  <section class="features">
     <div class="wrap">
-      <h2>Nobody reaches you unchecked.</h2>
-      <p class="intro">The whole point of a closed community is knowing who is in it.
-         Here is what stands between a stranger and your front door.</p>
+      <h2 class="eyebrow">FEATURES</h2>
+      <p class="standfirst">Your Safety Comes First. Your Peace of Mind Matters.</p>
 
       <ul class="checks">
         <li>
@@ -401,8 +353,8 @@
             <path d="m4.5 12.5 5 5 10-11"/>
           </svg>
           <div>
-            <strong>Identity verified, every member</strong>
-            <span>A live selfie matched against photo ID before an account opens.</span>
+            <strong>Identity Check</strong>
+            <span>Members complete an identity verification including a live selfie, and ID check</span>
           </div>
         </li>
         <li>
@@ -411,8 +363,8 @@
             <path d="m4.5 12.5 5 5 10-11"/>
           </svg>
           <div>
-            <strong>Credentials and references checked</strong>
-            <span>For every homecare assistant and every home helper on the platform.</span>
+            <strong>In-app Emergency SOS Button</strong>
+            <span>Emergency SOS feature notifies family in case of an emergency</span>
           </div>
         </li>
         <li>
@@ -421,8 +373,8 @@
             <path d="m4.5 12.5 5 5 10-11"/>
           </svg>
           <div>
-            <strong>An SOS button that reaches your family</strong>
-            <span>One press in an emergency and the people you nominated are contacted.</span>
+            <strong>Personal Homecare Assistants &amp; Home Helpers</strong>
+            <span>Professional credentials and references are reviewed manually as an extra step of verification</span>
           </div>
         </li>
         <li>
@@ -431,28 +383,33 @@
             <path d="m4.5 12.5 5 5 10-11"/>
           </svg>
           <div>
-            <strong>A closed community, not an open network</strong>
-            <span>Members only. Nothing you post is visible to the wider internet.</span>
+            <strong>Membership</strong>
+            <span>The Boomers Thrive65 App is where you can join our subscription-based
+                  monthly membership that unlocks full access to the community</span>
           </div>
         </li>
       </ul>
     </div>
   </section>
 
-  <section class="app" id="app">
-    <div class="wrap app-inner">
-      <img src="assets/logo.png" alt="Boomers Thrive65" width="168" height="168">
-      <div>
-        <h2>The community lives in the app.</h2>
-        <p>Download <strong>Boomers Thrive65</strong> to join, meet the community
-           and book help when you want it.</p>
+  <section class="community" id="app">
+    <div class="wrap">
+      <img src="assets/logo.png" alt="Boomers Thrive65" width="200" height="200">
 
-        <!-- TODO: replace both href values with the real App Store and Google Play
-             listings before this page goes live. -->
-        <div class="stores">
-          <a class="btn btn-solid" href="#">Download for iPhone</a>
-          <a class="btn btn-ghost" href="#">Download for Android</a>
-        </div>
+      <h2>The Community</h2>
+      <p class="download">Download the <strong>Boomers Thrive65 App</strong></p>
+      <p class="tagline">JOIN &nbsp;&#42;&nbsp; MEET the COMMUNITY &nbsp;&#42;&nbsp; BOOK HELP WHEN YOU NEED IT</p>
+
+      <div class="stores">
+        <span class="btn btn-waiting">Coming soon to the App Store</span>
+        <span class="btn btn-waiting">Coming soon to Google Play</span>
+
+        <!-- ONCE THE APP IS APPROVED: delete the two spans above and
+             uncomment these two, pasting in the real listing URLs.
+
+        <a class="btn btn-solid" href="PASTE_APP_STORE_URL">Download for iPhone</a>
+        <a class="btn btn-ghost" href="PASTE_GOOGLE_PLAY_URL">Download for Android</a>
+        -->
       </div>
     </div>
   </section>
@@ -460,11 +417,12 @@
 </main>
 
 <footer>
-  <div class="wrap rows">
-    <div>Concierges et cetera, LLC · Established 2004</div>
-    <div><a href="mailto:info@conciergesetc.com">info@conciergesetc.com</a></div>
-    <!-- Optional: add a phone number here if Cheryl wants calls. -->
-    <div class="fine">© <span id="yr">2026</span> Concierges et cetera, LLC. All rights reserved.</div>
+  <div class="wrap">
+    <div class="foot-main">
+      <div>Concierges et cetera, LLC &middot; Established 2004</div>
+      <div><a href="mailto:info@conciergesetcetera.com">info@conciergesetcetera.com</a></div>
+    </div>
+    <div class="fine">&copy; <span id="yr">2026</span> Concierges et cetera, LLC. All rights reserved.</div>
   </div>
 </footer>
 
