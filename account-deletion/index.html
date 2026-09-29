@@ -15,6 +15,51 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,600&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/legal.css">
+<style>
+  /* Deletion request form — only used on this page */
+  .delete-request{
+    background:#fff; border:1px solid rgba(20,33,61,.12); border-radius:12px;
+    padding:clamp(1.5rem, 4vw, 2.5rem); margin:0 0 3.5rem;
+  }
+  .delete-request h2{ margin-top:0; }
+  .form-intro{ color:var(--ink-soft); }
+  .field{ margin:0 0 1.35rem; }
+  .field-row{ display:grid; gap:0 1.25rem; align-items:end; }
+  @media (min-width:40rem){ .field-row{ grid-template-columns:1fr 1fr; } }
+  .field label{ display:block; font-weight:600; font-size:1.0625rem; margin-bottom:.4rem; }
+  .opt{ font-weight:400; color:var(--ink-soft); }
+  .field input[type=text], .field input[type=email], .field input[type=tel],
+  .field select, .field textarea{
+    width:100%; min-height:3.25rem; padding:.7rem .9rem;
+    font:inherit; font-size:1.0625rem; color:var(--ink);
+    background:#fff; border:1px solid rgba(20,33,61,.35); border-radius:8px;
+  }
+  .field textarea{ min-height:7rem; resize:vertical; }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:3px solid var(--amber); outline-offset:1px; border-color:var(--ink);
+  }
+  .field [aria-invalid="true"]{ border-color:#B42318; border-width:2px; }
+  .check{ display:flex; gap:.8rem; align-items:flex-start; }
+  .check input{ width:1.4rem; height:1.4rem; margin-top:.3rem; flex:none; accent-color:var(--navy); }
+  .check label{ font-weight:400; font-size:1rem; margin:0; }
+  .hint{ font-size:.95rem; color:var(--ink-soft); margin:.5rem 0 0; }
+  .trap{ position:absolute; left:-9999px; }
+  .form-error{
+    background:#FEF3F2; border-left:3px solid #B42318; color:#7A271A;
+    padding:.8rem 1rem; font-size:1rem; margin:0 0 1.25rem;
+  }
+  .btn-submit{
+    min-height:3.5rem; padding:.7rem 2rem; font:inherit; font-size:1.0625rem; font-weight:700;
+    color:var(--ink); background:var(--amber); border:2px solid var(--amber);
+    border-radius:999px; cursor:pointer;
+  }
+  .btn-submit:hover{ background:#ffb455; border-color:#ffb455; }
+  .btn-submit[disabled]{ opacity:.6; cursor:wait; }
+  @media (max-width:40rem){ .btn-submit{ width:100%; padding-inline:1rem; } }
+  .form-done h3{ margin-top:0; }
+  .form-done:focus{ outline:none; }
+  .policy-start{ margin-top:0; }
+</style>
 </head>
 <body>
 
@@ -26,6 +71,107 @@
   <div class="wrap doc-inner">
     <h1>Account Deletion Policy</h1>
     <p class="updated">Boomers Thrive65 Community App<br>Effective September 1, 2026</p>
+
+    <!-- ===================== ACCOUNT DELETION REQUEST FORM =====================
+         Submissions are emailed to admin@conciergesetcetera.social by Web3Forms
+         (free plan, 250 requests a month). Form created at
+         https://web3forms.com with admin@conciergesetcetera.social as the
+         recipient, access key is safe to publish.
+         ========================================================================= -->
+    <section class="delete-request" id="request" aria-labelledby="request-title">
+      <h2 id="request-title">Submit a deletion request</h2>
+      <p class="form-intro">Use this form to ask us to delete your Boomers Thrive65 account, or to delete some of your personal data. You can also delete your account in the app under <strong>Account Settings &gt; Delete Account</strong>.</p>
+
+      <form id="delete-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="Account deletion request — Boomers Thrive65">
+        <input type="hidden" name="from_name" value="Boomers Thrive65 website">
+        <input type="hidden" name="redirect" value="https://conciergesetcetera.social/account-deletion/?sent=1#request">
+        <!-- Spam trap: people never see or tick this box, bots do -->
+        <input type="checkbox" name="botcheck" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="field">
+          <label for="f-name">Full name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-email">Your account email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-email2">Confirm your email</label>
+            <input id="f-email2" name="confirm_email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-phone">Phone number <span class="opt">(optional)</span></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-type">What would you like us to do?</label>
+            <select id="f-type" name="request_type" required>
+              <option value="">Choose one</option>
+              <option>Delete my account and all my personal data</option>
+              <option>Delete some of my personal data, but keep my account</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-who">Who is making this request?</label>
+            <select id="f-who" name="requested_by" required>
+              <option value="">Choose one</option>
+              <option>I am the account holder</option>
+              <option>A family member or authorized representative</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f-reason">Why are you leaving? <span class="opt">(optional)</span></label>
+          <select id="f-reason" name="reason">
+            <option value="">Prefer not to say</option>
+            <option>I no longer need the service</option>
+            <option>I don't use the app often enough</option>
+            <option>The membership cost</option>
+            <option>The app is difficult to use</option>
+            <option>Privacy or safety concerns</option>
+            <option>A change in health or personal circumstances</option>
+            <option>I have another account</option>
+            <option>Other (please tell us below)</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="f-message">Anything else we should know? <span class="opt">(optional)</span></label>
+          <textarea id="f-message" name="message" rows="4"></textarea>
+          <p class="hint">If you only want some data deleted, or you are writing on someone's behalf, please tell us the details here.</p>
+        </div>
+
+        <div class="field check">
+          <input id="f-ack" name="acknowledgment" type="checkbox" value="Confirmed" required>
+          <label for="f-ack">I understand that deleting an account is permanent and cannot be undone, and that the profile, messages, connections and account history will not be recoverable.</label>
+        </div>
+
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+
+        <button type="submit" class="btn-submit">Submit deletion request</button>
+        <p class="hint">We may contact you to verify your identity before processing the request. Verified requests are typically completed within 30 days.</p>
+      </form>
+
+      <div class="form-done" id="form-done" role="status" tabindex="-1" hidden>
+        <h3>Thank you, your request has been sent</h3>
+        <p>We will contact you at the email address you gave us to verify your identity and confirm your request. Verified requests are typically completed within 30 days.</p>
+        <p>Questions in the meantime: <a href="mailto:admin@conciergesetcetera.social">admin@conciergesetcetera.social</a></p>
+      </div>
+    </section>
+
+    <h2 class="policy-start">Our Account Deletion Policy</h2>
+    <!-- =================== END ACCOUNT DELETION REQUEST FORM =================== -->
+
 
     <p>At <strong>Boomers Thrive65</strong>, the official online community platform and mobile application operated by <strong>Concierges et cetera, LLC</strong> ("Company," "we," "our," or "us"), we respect your right to control your personal information and your membership within our community. This Account Deletion Policy explains how members may request the deletion of their account and what happens to their information when an account is removed.</p>
 <p>Our goal is to provide a transparent process while maintaining the safety, security, and integrity of our online community for Baby Boomers, their families, and service providers.</p>
@@ -165,5 +311,72 @@
 </footer>
 
 <script>document.getElementById('yr').textContent = new Date().getFullYear();</script>
+<script>
+(function () {
+  var form = document.getElementById('delete-form');
+  var done = document.getElementById('form-done');
+  var errorBox = document.getElementById('form-error');
+  var button = form.querySelector('.btn-submit');
+  var el = form.elements;
+
+  function showDone() {
+    form.hidden = true;
+    done.hidden = false;
+    done.focus();
+  }
+
+  // Arrived back here after a no-JavaScript submission
+  if (/[?&]sent=1/.test(location.search)) showDone();
+
+  function fail(message, field) {
+    errorBox.textContent = message;
+    errorBox.hidden = false;
+    if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
+    else errorBox.scrollIntoView({ block: 'center' });
+  }
+
+  form.addEventListener('input', function (e) {
+    e.target.removeAttribute('aria-invalid');
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    errorBox.hidden = true;
+
+    var name = el['name'].value.trim();
+    var email = el['email'].value.trim();
+    var email2 = el['confirm_email'].value.trim();
+    if (!name) return fail('Please enter your full name.', el['name']);
+    if (!el['email'].checkValidity() || !email) return fail('Please enter a valid email address.', el['email']);
+    if (email.toLowerCase() !== email2.toLowerCase()) return fail('The two email addresses do not match.', el['confirm_email']);
+    if (!el['request_type'].value) return fail('Please choose what you would like us to do.', el['request_type']);
+    if (!el['requested_by'].value) return fail('Please tell us who is making this request.', el['requested_by']);
+    if (!el['acknowledgment'].checked) return fail('Please tick the box to confirm you understand deletion is permanent.', el['acknowledgment']);
+
+    button.disabled = true;
+    button.textContent = 'Sending…';
+
+    var data = Object.fromEntries(new FormData(form));
+    delete data.redirect;
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (res.success) return showDone();
+        throw new Error(res.message);
+      })
+      .catch(function () {
+        fail('Sorry, your request could not be sent. Please try again, or email us at admin@conciergesetcetera.social.');
+      })
+      .finally(function () {
+        button.disabled = false;
+        button.textContent = 'Submit deletion request';
+      });
+  });
+})();
+</script>
 </body>
 </html>
